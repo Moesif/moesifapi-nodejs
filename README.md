@@ -1,7 +1,7 @@
 MoesifApi Lib for NodeJS
 ========================
 
-[Source Code on GitHub](https://github.com/Moesif/Moesif-API-NodeJS)
+[Source Code on GitHub](https://github.com/moesif/moesifapi-nodejs)
 
 
 __Check out Moesif's
@@ -115,7 +115,7 @@ How To Use:
 How To Test:
 ============
 ````shell
-git clone https://github.com/Moesif/Moesif-API-NodeJS
+git clone https://github.com/moesif/moesifapi-nodejs
 cd Moesif-API-NodeJS
 npm install --global mocha
 mocha
