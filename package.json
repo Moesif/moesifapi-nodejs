@@ -3,12 +3,23 @@
   "version": "1.0.6",
   "description": "Collection/Data Ingestion API",
   "main": "./lib/index.js",
-  "keywords": [],
-  "author": "Derric Gilling <derric@moesif.com>",
+  "keywords": [
+    "moesif",
+    "api",
+    "express",
+    "debug",
+    "logging",
+    "trace"
+  ],
+  "author": {
+    "name": "Derric Gilling",
+    "email": "derric@moesif.com",
+    "url": "https://www.moesif.com"
+  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://www.moesif.com"
+    "url": "https://github.com/Moesif/moesif-api-nodejs"
   },
   "dependencies": {
     "request": "^2.55.0",
