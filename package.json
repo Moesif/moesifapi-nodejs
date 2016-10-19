@@ -1,6 +1,6 @@
 {
   "name": "moesifapi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Collection/Data Ingestion API",
   "main": "./lib/index.js",
   "keywords": [
@@ -19,7 +19,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Moesif/moesif-api-nodejs"
+    "url": "https://github.com/moesif/moesifapi-nodejs"
   },
   "dependencies": {
     "request": "^2.55.0",
