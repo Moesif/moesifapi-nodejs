@@ -116,7 +116,7 @@ How To Test:
 ============
 ````shell
 git clone https://github.com/moesif/moesifapi-nodejs
-cd Moesif-API-NodeJS
+cd moesifapi-nodejs
 npm install --global mocha
 mocha
 ```
