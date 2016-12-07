@@ -5,9 +5,7 @@ MoesifApi Lib for NodeJS
 
 
 __Check out Moesif's
-[NodeJS developer documentation](https://www.moesif.com/developer-documentation) to learn more__
-
-(Documentation access requires an active account)
+[NodeJS developer documentation](https://www.moesif.com/developer-documentation/?javascript) to learn more__
 
 Install from NPM:
 =================
