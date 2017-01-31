@@ -1,20 +1,21 @@
-MoesifApi Lib for NodeJS
-========================
+# MoesifApi Lib for NodeJS
+
 
 [Source Code on GitHub](https://github.com/moesif/moesifapi-nodejs)
 
+[Package on NPMJS](https://www.npmjs.com/package/moesifapi)
 
-__Check out Moesif's
-[NodeJS developer documentation](https://www.moesif.com/developer-documentation/?javascript) to learn more__
+__Check out Moesif's [Developer Documentation](https://www.moesif.com/docs) and [Node API Reference](https://www.moesif.com/docs/api?javascript) to learn more__
 
-Install from NPM:
-=================
+
+## Install from NPM:
+
 ```shell
 npm install moesifapi
 ```
 
-How To Use:
-===========
+## How To Use:
+
 
 (See ApiControllerTest.js for usage examples)
 
@@ -110,8 +111,8 @@ How To Use:
 ```
 
 
-How To Test:
-============
+## How To Test:
+
 ````shell
 git clone https://github.com/moesif/moesifapi-nodejs
 cd moesifapi-nodejs
