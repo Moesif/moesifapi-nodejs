@@ -1,6 +1,6 @@
 {
   "name": "moesifapi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Collection/Data Ingestion API",
   "main": "./lib/index.js",
   "keywords": [
