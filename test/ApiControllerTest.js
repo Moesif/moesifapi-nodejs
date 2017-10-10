@@ -2,7 +2,7 @@ var moesifapi = require('../lib/index.js');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "eyJhcHAiOiIzMTU6MSIsInZlciI6IjIuMCIsIm9yZyI6IjM1MToxNSIsImlhdCI6MTQ4Nzk4MDgwMH0.o_hDQF_Y6-4Z3TWMBYi3bbbxHx4gCaW5ieRagJZtZew";
+config.ApplicationId = "your application id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -46,8 +46,16 @@ describe('TestAddEvent', function() {
                 '"Message": "Missing field field_a"' +
             '}');
 
+        var metadata = {
+          testData: 1,
+          metaData2: {
+            a: 'abc',
+            b: 'abc'
+          }
+        };
+        var reqDate = new Date();
         var eventReq = {
-            time: "2017-02-25T04:45:42.914",
+            time: reqDate,
             uri: "https://api.acmeinc.com/items/reviews/",
             verb: "PATCH",
             apiVersion: "1.1.0",
@@ -57,7 +65,7 @@ describe('TestAddEvent', function() {
         };
 
         var eventRsp = {
-            time: "2016-09-09T04:45:42.914",
+            time: (new Date()).setMilliseconds(reqDate.getMilliseconds() + 500),
             status: 500,
             headers: rspHeaders,
             body: rspBody
@@ -67,10 +75,12 @@ describe('TestAddEvent', function() {
             request: eventReq,
             response: eventRsp,
             userId: "my_user_id",
-            sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f"
+            sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+            metadata: metadata
         };
 
         var request = controller.createEvent(new EventModel(eventModel), function(error, response, context) {
+            console.log(error);
 
             expect(context.response.statusCode).to.equal(201);
             if (error) done(error);
@@ -121,8 +131,10 @@ describe('TestAddBatchedEvents', function() {
                 '"Message": "Missing field field_a"' +
             '}');
 
+        var reqDate = new Date();
+
         var eventReq = {
-            time: "2017-02-25T04:45:42.914",
+            time: reqDate,
             uri: "https://api.acmeinc.com/items/reviews/",
             verb: "PATCH",
             apiVersion: "1.1.0",
@@ -132,7 +144,7 @@ describe('TestAddBatchedEvents', function() {
         };
 
         var eventRsp = {
-            time: "2016-09-09T04:45:42.914",
+            time: (new Date()).setMilliseconds(reqDate.getMilliseconds() + 300),
             status: 500,
             headers: rspHeaders,
             body: rspBody
@@ -142,7 +154,11 @@ describe('TestAddBatchedEvents', function() {
             request: eventReq,
             response: eventRsp,
             userId: "my_user_id",
-            sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f"
+            sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+            metadata: {
+              foo: 'abc',
+              bar: 'efg'
+            }
         };
 
         var events = [new EventModel(eventModel),
