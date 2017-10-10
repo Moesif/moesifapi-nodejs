@@ -68,7 +68,7 @@ var rspBody = JSON.parse('{' +
     '}');
 
 var eventReq = {
-    time: "2017-01-09T04:45:42.914",
+    time: new Date(),
     uri: "https://api.acmeinc.com/items/reviews/",
     verb: "PATCH",
     apiVersion: "1.1.0",
@@ -78,7 +78,7 @@ var eventReq = {
 };
 
 var eventRsp = {
-    time: "2017-01-09T04:45:42.914",
+    time: new Date(),
     status: 500,
     headers: rspHeaders,
     body: rspBody
@@ -88,7 +88,11 @@ var eventModel = {
     request: eventReq,
     response: eventRsp,
     userId: "my_user_id",
-    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f"
+    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+    metadata: {
+      foo: 'abc',
+      bar: 'efg'
+    }
 };
 
 // 4. Create a single event
