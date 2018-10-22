@@ -1,9 +1,13 @@
 # MoesifApi Lib for NodeJS
 
+[![NPM](https://nodei.co/npm/moesifapi.png?compact=true&stars=true)](https://nodei.co/npm/moesifapi)
+
+[![Built For][ico-built-for]][link-built-for]
+[![Total Downloads][ico-downloads]][link-downloads]
+[![Software License][ico-license]][link-license]
+[![Source Code][ico-source]][link-source]
 
 [Source Code on GitHub](https://github.com/moesif/moesifapi-nodejs)
-
-[Package on NPMJS](https://www.npmjs.com/package/moesifapi)
 
 __Check out Moesif's [Developer Documentation](https://www.moesif.com/docs) and [Node API Reference](https://www.moesif.com/docs/api?javascript) to learn more__
 
@@ -283,3 +287,13 @@ cd moesifapi-nodejs
 npm install --global mocha
 mocha
 ```
+
+[ico-built-for]: https://img.shields.io/badge/built%20for-nodejs-blue.svg
+[ico-downloads]: https://img.shields.io/npm/dt/moesifapi.svg
+[ico-license]: https://img.shields.io/badge/License-Apache%202.0-green.svg
+[ico-source]: https://img.shields.io/github/last-commit/moesif/moesifapi-nodejs.svg?style=social
+
+[link-built-for]: https://nodejs.org
+[link-downloads]: https://www.npmjs.com/package/moesifapi
+[link-license]: https://raw.githubusercontent.com/Moesif/moesifapi-nodejs/master/LICENSE
+[link-source]: https://github.com/moesif/moesifapi-nodejs
