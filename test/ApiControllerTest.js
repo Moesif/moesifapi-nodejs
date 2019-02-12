@@ -240,3 +240,14 @@ describe('TestUpdateUsersBatch', function() {
     });
   });
 });
+
+describe('TestGetAppConfig', function() {
+  it('getAppConfig() should return 200 HTTP status', function(done) {
+    var controller = moesifapi.ApiController;
+    var request = controller.getAppConfig(function(error, response, context) {
+      expect(context.response.statusCode).to.equal(200);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
