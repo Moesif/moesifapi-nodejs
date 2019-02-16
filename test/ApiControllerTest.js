@@ -251,3 +251,69 @@ describe('TestGetAppConfig', function() {
     });
   });
 });
+
+describe('TestAddCompany', function() {
+  it('addCompany() should be success with 201 status', function(done) {
+    var controller = moesifapi.ApiController;
+    var company = {
+        companyId: "1",
+        sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+        metadata: {
+          email: "johndoe@acmeinc.com",
+          string_field: "value_1",
+          number_field: 0,
+          object_field: {
+            field_a: "value_a",
+            field_b: "value_b"
+          }
+        }
+    };
+
+    var request = controller.addCompany(new CompanyModel(company), function(error, response, context) {
+      expect(context.response.statusCode).to.equal(201);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
+
+describe('TestAddCompaniesBatch', function() {
+  it('addCompaniesBatch() should be success with 201 status', function(done) {
+    var controller = moesifapi.ApiController;
+    var companyA = {
+        companyId: "1",
+        sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+        metadata: {
+          email: "johndoe@acmeinc.com",
+          string_field: "value_1",
+          number_field: 0,
+          object_field: {
+            field_a: "value_a",
+            field_b: "value_b"
+          }
+        }
+    };
+
+    var companyB = {
+      companyId: "2",
+      metadata: {
+        email: "johndoe@acmeinc.com",
+        string_field: "value_1",
+        number_field: 0,
+        object_field: {
+          field_a: "value_a",
+          field_b: "value_b",
+          field_c: "value_c"
+        }
+      }
+  };
+
+    var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
+
+    var request = controller.addCompaniesBatch(companies, function(error, response, context) {
+      expect(context.response.statusCode).to.equal(201);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
