@@ -242,7 +242,7 @@ var api = moesifapi.ApiController;
 var config = moesifapi.configuration;
 config.ApplicationId = "my_application_id";
 
-// 3. Generate an API Event Model
+// 3. Generate an User Model
 var userA = {
     userId: "12345",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
@@ -273,8 +273,92 @@ var userB = {
 
 var users = [new UserModel(userA), new UserModel(userB)];
 
-// 4. Send batch of events
+// 4. Send batch of users
 api.updateUsersBatch(users, function(error, response, context) {
+  // Do Something
+});
+```
+
+### Add company
+
+Add company information with custom metadata. The only __required__ field is `company_id`.
+
+```javascript
+// 1. Import the module
+var moesifapi = require('moesifapi');
+var api = moesifapi.ApiController;
+
+// 2. Configure the ApplicationId
+var config = moesifapi.configuration;
+config.ApplicationId = "my_application_id";
+
+// 3. Generate a Company Model
+var company = {
+    companyId: "1",
+    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+    metadata: {
+      email: "johndoe@acmeinc.com",
+      string_field: "value_1",
+      number_field: 0,
+      object_field: {
+        field_a: "value_a",
+        field_b: "value_b"
+      }
+    }
+};
+
+// 4. Create a single company
+api.addCompany(new CompanyModel(company), function(error, response, context) {
+  // Do Something
+});
+```
+
+### Add a batch of companies
+
+Will update all the companies in a single batch. The only __required__ field is `company_id`.
+
+```javascript
+// 1. Import the module
+var moesifapi = require('moesifapi');
+var api = moesifapi.ApiController;
+
+// 2. Configure the ApplicationId
+var config = moesifapi.configuration;
+config.ApplicationId = "my_application_id";
+
+// 3. Generate a Company Model
+var companyA = {
+    companyId: "1",
+    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+    metadata: {
+      email: "johndoe@acmeinc.com",
+      string_field: "value_1",
+      number_field: 0,
+      object_field: {
+        field_a: "value_a",
+        field_b: "value_b"
+      }
+    }
+};
+
+var companyB = {
+  companyId: "2",
+  metadata: {
+    email: "johndoe@acmeinc.com",
+    string_field: "value_1",
+    number_field: 0,
+    object_field: {
+      field_a: "value_a",
+      field_b: "value_b",
+      field_c: "value_c"
+    }
+  }
+};
+
+var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
+
+// 4. Send batch of companies
+api.addCompaniesBatch(companies, function(error, response, context) {
   // Do Something
 });
 ```
