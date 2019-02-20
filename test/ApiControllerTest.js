@@ -1,4 +1,7 @@
 var moesifapi = require('../lib/index.js');
+var UserModel = require('../lib/Models/UserModel');
+var EventModel = require('../lib/Models/EventModel');
+var CompanyModel = require('../lib/Models/CompanyModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
@@ -252,8 +255,8 @@ describe('TestGetAppConfig', function() {
   });
 });
 
-describe('TestAddCompany', function() {
-  it('addCompany() should be success with 201 status', function(done) {
+describe('TestUpdateCompany', function() {
+  it('updateCompany() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
     var company = {
         companyId: "1",
@@ -269,7 +272,7 @@ describe('TestAddCompany', function() {
         }
     };
 
-    var request = controller.addCompany(new CompanyModel(company), function(error, response, context) {
+    var request = controller.updateCompany(new CompanyModel(company), function(error, response, context) {
       expect(context.response.statusCode).to.equal(201);
       if (error) done(error);
       else done();
@@ -277,8 +280,8 @@ describe('TestAddCompany', function() {
   });
 });
 
-describe('TestAddCompaniesBatch', function() {
-  it('addCompaniesBatch() should be success with 201 status', function(done) {
+describe('TestUpdateCompaniesBatch', function() {
+  it('updateCompaniesBatch() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
     var companyA = {
         companyId: "1",
@@ -310,7 +313,7 @@ describe('TestAddCompaniesBatch', function() {
 
     var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
 
-    var request = controller.addCompaniesBatch(companies, function(error, response, context) {
+    var request = controller.updateCompaniesBatch(companies, function(error, response, context) {
       expect(context.response.statusCode).to.equal(201);
       if (error) done(error);
       else done();
