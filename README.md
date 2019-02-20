@@ -282,9 +282,9 @@ api.updateUsersBatch(users, function(error, response, context) {
 });
 ```
 
-### Add company
+### Update company
 
-Add company information with custom metadata. The only __required__ field is `company_id`.
+Update company information with custom metadata. The only __required__ field is `company_id`.
 
 ```javascript
 // 1. Import the module
@@ -311,12 +311,12 @@ var company = {
 };
 
 // 4. Create a single company
-api.addCompany(new CompanyModel(company), function(error, response, context) {
+api.updateCompany(new CompanyModel(company), function(error, response, context) {
   // Do Something
 });
 ```
 
-### Add a batch of companies
+### Update a batch of companies
 
 Will update all the companies in a single batch. The only __required__ field is `company_id`.
 
@@ -361,7 +361,7 @@ var companyB = {
 var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
 
 // 4. Send batch of companies
-api.addCompaniesBatch(companies, function(error, response, context) {
+api.updateCompaniesBatch(companies, function(error, response, context) {
   // Do Something
 });
 ```
