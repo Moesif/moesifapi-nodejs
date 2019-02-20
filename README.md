@@ -222,7 +222,7 @@ var user = {
 };
 
 // 4. Create a single user
-api.updateUser(new UserModel(user), function(error, response, context) {
+api.updateUser(new moesifapi.UserModel(user), function(error, response, context) {
   // Do Something
 });
 ```
@@ -271,7 +271,10 @@ var userB = {
     }
 };
 
-var users = [new UserModel(userA), new UserModel(userB)];
+var users = [
+  new moesifapi.UserModel(userA),
+  new moesifapi.UserModel(userB)
+];
 
 // 4. Send batch of events
 api.updateUsersBatch(users, function(error, response, context) {

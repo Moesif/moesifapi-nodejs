@@ -1,4 +1,7 @@
 var moesifapi = require('../lib/index.js');
+var UserModel = require('../lib/Models/UserModel');
+var EventModel = require('../lib/Models/EventModel');
+var CompanyModel = require('../lib/Models/CompanyModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
