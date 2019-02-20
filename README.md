@@ -242,7 +242,7 @@ var api = moesifapi.ApiController;
 var config = moesifapi.configuration;
 config.ApplicationId = "my_application_id";
 
-// 3. Generate an User Model
+// 3. Generate a User Model
 var userA = {
     userId: "12345",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
