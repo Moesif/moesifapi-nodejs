@@ -92,6 +92,7 @@ var eventModel = {
     request: eventReq,
     response: eventRsp,
     userId: "my_user_id",
+    companyId: "my_company_id",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
     metadata: {
       foo: 'abc',
@@ -177,6 +178,7 @@ var eventModel = {
     request: eventReq,
     response: eventRsp,
     userId: "my_user_id",
+    companyId: "my_company_id",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f"
 };
 
@@ -208,7 +210,8 @@ config.ApplicationId = "my_application_id";
 
 // 3. Generate a User Model
 var user = {
-    userId: "my_user_id",
+    userId: "12345",
+    companyId: "67890",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
     metadata: {
       email: "johndoe@acmeinc.com",
@@ -245,6 +248,7 @@ config.ApplicationId = "my_application_id";
 // 3. Generate a User Model
 var userA = {
     userId: "12345",
+    companyId: "67890",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
     metadata: {
       email: "johndoe@acmeinc.com",
@@ -258,7 +262,8 @@ var userA = {
 };
 
 var userB = {
-    userId: "6789",
+    userId: "1234",
+    companyId: "6789",
     sessionToken: "23jdf0oszfexfqe[lwjfiefovprewv4d8ayrcdx8nu2ng]zfeeadedefx43f",
     metadata: {
       email: "maryjane@acmeinc.com",
@@ -297,7 +302,7 @@ config.ApplicationId = "my_application_id";
 
 // 3. Generate a Company Model
 var company = {
-    companyId: "1",
+    companyId: "12345",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
     metadata: {
       email: "johndoe@acmeinc.com",
@@ -331,7 +336,7 @@ config.ApplicationId = "my_application_id";
 
 // 3. Generate a Company Model
 var companyA = {
-    companyId: "1",
+    companyId: "12345",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
     metadata: {
       email: "johndoe@acmeinc.com",
@@ -345,7 +350,7 @@ var companyA = {
 };
 
 var companyB = {
-  companyId: "2",
+  companyId: "67890",
   metadata: {
     email: "johndoe@acmeinc.com",
     string_field: "value_1",

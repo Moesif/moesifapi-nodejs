@@ -5,7 +5,7 @@ var CompanyModel = require('../lib/Models/CompanyModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "your application id";
+config.ApplicationId = "Your Moesif ApplicationId";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -78,6 +78,7 @@ describe('TestAddEvent', function() {
             request: eventReq,
             response: eventRsp,
             userId: "my_user_id",
+            companyId: "my_company_id",
             sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
             metadata: metadata
         };
@@ -157,6 +158,7 @@ describe('TestAddBatchedEvents', function() {
             request: eventReq,
             response: eventRsp,
             userId: "my_user_id",
+            companyId: "my_company_id",
             sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
             metadata: {
               foo: 'abc',
@@ -182,7 +184,8 @@ describe('TestUpdateUser', function() {
   it('updateUser() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
     var user = {
-        userId: "my_user_id",
+        userId: "12345",
+        companyId: "67890",
         sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
         metadata: {
           email: "johndoe@acmeinc.com",
@@ -208,6 +211,7 @@ describe('TestUpdateUsersBatch', function() {
     var controller = moesifapi.ApiController;
     var userA = {
         userId: "12345",
+        companyId: "67890",
         sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
         metadata: {
           email: "johndoe@acmeinc.com",
@@ -221,7 +225,8 @@ describe('TestUpdateUsersBatch', function() {
     };
 
     var userB = {
-        userId: "6789",
+        userId: "1234",
+        companyId: "6789",
         sessionToken: "23jdf0oszfexfqe[lwjfiefovprewv4d8ayrcdx8nu2ng]zfeeadedefx43f",
         metadata: {
           email: "maryjane@acmeinc.com",
@@ -259,7 +264,7 @@ describe('TestUpdateCompany', function() {
   it('updateCompany() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
     var company = {
-        companyId: "1",
+        companyId: "12345",
         sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
         metadata: {
           email: "johndoe@acmeinc.com",
@@ -284,7 +289,7 @@ describe('TestUpdateCompaniesBatch', function() {
   it('updateCompaniesBatch() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
     var companyA = {
-        companyId: "1",
+        companyId: "12345",
         sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
         metadata: {
           email: "johndoe@acmeinc.com",
@@ -298,7 +303,7 @@ describe('TestUpdateCompaniesBatch', function() {
     };
 
     var companyB = {
-      companyId: "2",
+      companyId: "67890",
       metadata: {
         email: "johndoe@acmeinc.com",
         string_field: "value_1",
