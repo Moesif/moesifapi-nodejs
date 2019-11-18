@@ -208,7 +208,10 @@ var api = moesifapi.ApiController;
 var config = moesifapi.configuration;
 config.ApplicationId = "my_application_id";
 
-// 3. Generate a User Model
+// 3. Generate a Campaign Model
+var campaign = new moesifapi.CampaignModel({utmSource: "Newsletter", utmMedium: "Email"});
+
+// 4. Generate an User Model
 var user = {
     userId: "12345",
     companyId: "67890",
@@ -221,7 +224,8 @@ var user = {
         field_a: "value_a",
         field_b: "value_b"
       }
-    }
+    },
+    campaign: campaign
 };
 
 // 4. Create a single user
@@ -300,7 +304,10 @@ var api = moesifapi.ApiController;
 var config = moesifapi.configuration;
 config.ApplicationId = "my_application_id";
 
-// 3. Generate a Company Model
+// 3. Generate a Campaign Model
+var campaign = new moesifapi.CampaignModel({utmSource: "Adwords", utmMedium: "Twitter"});
+
+// 4. Generate a Company Model
 var company = {
     companyId: "12345",
     sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
@@ -312,7 +319,8 @@ var company = {
         field_a: "value_a",
         field_b: "value_b"
       }
-    }
+    },
+    campaign: campaign
 };
 
 // 4. Create a single company

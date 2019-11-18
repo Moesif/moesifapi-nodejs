@@ -2,6 +2,7 @@ var moesifapi = require('../lib/index.js');
 var UserModel = require('../lib/Models/UserModel');
 var EventModel = require('../lib/Models/EventModel');
 var CompanyModel = require('../lib/Models/CompanyModel');
+var CampaignModel = require('../lib/Models/CampaignModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
@@ -183,6 +184,9 @@ describe('TestAddBatchedEvents', function() {
 describe('TestUpdateUser', function() {
   it('updateUser() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
+
+    var campaign = new CampaignModel({utmSource: "Newsletter", utmMedium: "Email"});
+
     var user = {
         userId: "12345",
         companyId: "67890",
@@ -195,7 +199,8 @@ describe('TestUpdateUser', function() {
             field_a: "value_a",
             field_b: "value_b"
           }
-        }
+        },
+        campaign: campaign
     };
 
     var request = controller.updateUser(new UserModel(user), function(error, response, context) {
@@ -263,6 +268,9 @@ describe('TestGetAppConfig', function() {
 describe('TestUpdateCompany', function() {
   it('updateCompany() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
+
+    var campaign = new CampaignModel({utmSource: "Adwords", utmMedium: "Twitter"});
+
     var company = {
         companyId: "12345",
         sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
@@ -274,7 +282,8 @@ describe('TestUpdateCompany', function() {
             field_a: "value_a",
             field_b: "value_b"
           }
-        }
+        },
+        campaign: campaign
     };
 
     var request = controller.updateCompany(new CompanyModel(company), function(error, response, context) {
