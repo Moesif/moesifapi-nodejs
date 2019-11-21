@@ -1,11 +1,14 @@
 {
   "name": "moesifapi",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Collection/Data Ingestion API for Moesif",
   "main": "./lib/index.js",
   "keywords": [
     "moesif",
     "api",
+    "analytics",
+    "monitor",
+    "monitoring",
     "express",
     "debug",
     "logging",
@@ -22,11 +25,11 @@
     "url": "https://github.com/moesif/moesifapi-nodejs"
   },
   "dependencies": {
-    "request": "^2.55.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^6.2.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
   },
   "scripts": {
     "test": "mocha --reporter spec"

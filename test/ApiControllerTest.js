@@ -37,7 +37,7 @@ describe('TestAddEvent', function() {
             '}');
 
         var rspHeaders = JSON.parse('{' +
-                '"Date": "Tue, 25 Feb 2017 23:46:49 GMT",' +
+                '"Date": "Tue, 25 Feb 2019 23:46:49 GMT",' +
                 '"Vary": "Accept-Encoding",' +
                 '"Pragma": "no-cache",' +
                 '"Expires": "-1",' +
@@ -123,7 +123,7 @@ describe('TestAddBatchedEvents', function() {
             '}');
 
         var rspHeaders = JSON.parse('{' +
-                '"Date": "Tue, 25 Feb 2017 23:46:49 GMT",' +
+                '"Date": "Tue, 25 Feb 2019 23:46:49 GMT",' +
                 '"Vary": "Accept-Encoding",' +
                 '"Pragma": "no-cache",' +
                 '"Expires": "-1",' +
