@@ -208,26 +208,30 @@ var api = moesifapi.ApiController;
 var config = moesifapi.configuration;
 config.ApplicationId = "my_application_id";
 
-// 3. Generate a Campaign Model
-var campaign = new moesifapi.CampaignModel({utmSource: "Newsletter", utmMedium: "Email"});
-
-// 4. Generate an User Model
+// Only userId is required.
+// metadata can be any custom object
 var user = {
-    userId: "12345",
-    companyId: "67890",
-    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
-    metadata: {
-      email: "johndoe@acmeinc.com",
-      string_field: "value_1",
-      number_field: 0,
-      object_field: {
-        field_a: "value_a",
-        field_b: "value_b"
-      }
+  userId: '12345',
+  companyId: '67890'
+  campaign: {
+    utmSource: 'google',
+    utmMedium: 'cpc', 
+    utmCampaign: 'adwords',
+    utmTerm: 'api+tooling',
+    utmContent: 'landing'
+  },
+  metadata: {
+    email: 'john@acmeinc.com',
+    firstName: 'John',
+    lastName: 'Doe',
+    title: 'Software Engineer',
+    salesInfo: {
+        stage: 'Customer',
+        lifetimeValue: 24000,
+        accountOwner: 'mary@contoso.com',
     },
-    campaign: campaign
+  }
 };
-
 // 4. Create a single user
 api.updateUser(new moesifapi.UserModel(user), function(error, response, context) {
   // Do Something
@@ -251,33 +255,50 @@ config.ApplicationId = "my_application_id";
 
 // 3. Generate a User Model
 var userA = {
-    userId: "12345",
-    companyId: "67890",
-    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
-    metadata: {
-      email: "johndoe@acmeinc.com",
-      string_field: "value_1",
-      number_field: 0,
-      object_field: {
-        field_a: "value_a",
-        field_b: "value_b"
-      }
-    }
+  userId: '12345',
+  companyId: '67890'
+  campaign: {
+    utmSource: 'google',
+    utmMedium: 'cpc', 
+    utmCampaign: 'adwords',
+    utmTerm: 'api+tooling',
+    utmContent: 'landing'
+  },
+  metadata: {
+    email: 'john@acmeinc.com',
+    firstName: 'John',
+    lastName: 'Doe',
+    title: 'Software Engineer',
+    salesInfo: {
+        stage: 'Customer',
+        lifetimeValue: 24000,
+        accountOwner: 'mary@contoso.com',
+    },
+  }
+};
 };
 
 var userB = {
-    userId: "1234",
-    companyId: "6789",
-    sessionToken: "23jdf0oszfexfqe[lwjfiefovprewv4d8ayrcdx8nu2ng]zfeeadedefx43f",
-    metadata: {
-      email: "maryjane@acmeinc.com",
-      string_field: "value_1",
-      number_field: 1,
-      object_field: {
-        field_a: "value_a",
-        field_b: "value_b"
-      }
-    }
+  userId: '67890',
+  companyId: '67890'
+  campaign: {
+    utmSource: 'google',
+    utmMedium: 'cpc', 
+    utmCampaign: 'adwords',
+    utmTerm: 'api+tooling',
+    utmContent: 'landing'
+  },
+  metadata: {
+    email: 'mary@contoso.com',
+    firstName: 'Mary',
+    lastName: 'Jane',
+    title: 'Software Engineer',
+    salesInfo: {
+        stage: 'Customer',
+        lifetimeValue: 24000,
+        accountOwner: 'mary@contoso.com',
+    },
+  }
 };
 
 var users = [
