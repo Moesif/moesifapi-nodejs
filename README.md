@@ -193,20 +193,18 @@ api.createEventsBatch(events, function(error, response, context) {
 });
 ```
 
-### Update an end user
+## Update a Single User
 
-Updating an end user will create one if it does not exist,
-also know as [upsert](https://en.wikipedia.org/wiki/Merge_(SQL))
-The only __required__ field is `user_id`.
+Create or update a user profile in Moesif.
+The metadata field can be any customer demographic or other info you want to store.
+Only the `userId` field is required.
+For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-user).
 
 ```javascript
-// 1. Import the module
 var moesifapi = require('moesifapi');
-var api = moesifapi.ApiController;
+var apiClient = moesifapi.ApiController;
 
-// 2. Configure the ApplicationId
-var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
 
 // Only userId is required.
 // metadata can be any custom object
@@ -233,25 +231,22 @@ var user = {
   }
 };
 // 4. Create a single user
-api.updateUser(new moesifapi.UserModel(user), function(error, response, context) {
+apiClient.updateUser(new moesifapi.UserModel(user), function(error, response, context) {
   // Do Something
 });
 ```
 
-### Update a batch of end users
+## Update Users in Batch
 
-Will update all users in a single batch, useful for saving from offline sources like CSV.
-Any user that does not exist will be created, also known as [upsert](https://en.wikipedia.org/wiki/Merge_(SQL))
-The only __required__ field is `user_id`.
+Similar to UpdateUser, but used to update a list of users in one batch. 
+Only the `UserId` field is required.
+For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-users-in-batch).
 
 ```javascript
-// 1. Import the module
 var moesifapi = require('moesifapi');
-var api = moesifapi.ApiController;
+var apiClient = moesifapi.ApiController;
 
-// 2. Configure the ApplicationId
-var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
 
 // 3. Generate a User Model
 var userA = {
@@ -307,95 +302,116 @@ var users = [
 ];
 
 // 4. Send batch of users
-api.updateUsersBatch(users, function(error, response, context) {
+apiClient.updateUsersBatch(users, function(error, response, context) {
   // Do Something
 });
 ```
 
-### Update company
+## Update a Single Company
 
-Update company information with custom metadata. The only __required__ field is `company_id`.
+Create or update a company profile in Moesif.
+The metadata field can be any company demographic or other info you want to store.
+Only the `company_id` field is required.
+For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-company).
 
 ```javascript
-// 1. Import the module
 var moesifapi = require('moesifapi');
-var api = moesifapi.ApiController;
+var apiClient = moesifapi.ApiController;
 
-// 2. Configure the ApplicationId
-var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
 
-// 3. Generate a Campaign Model
-var campaign = new moesifapi.CampaignModel({utmSource: "Adwords", utmMedium: "Twitter"});
 
-// 4. Generate a Company Model
+// Only companyId is required.
+// Campaign object is optional, but useful if you want to track ROI of acquisition channels
+// See https://www.moesif.com/docs/api#update-a-company for campaign schema
+// metadata can be any custom object
 var company = {
-    companyId: "12345",
-    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
-    metadata: {
-      email: "johndoe@acmeinc.com",
-      string_field: "value_1",
-      number_field: 0,
-      object_field: {
-        field_a: "value_a",
-        field_b: "value_b"
-      }
-    },
-    campaign: campaign
-};
-
-// 4. Create a single company
-api.updateCompany(new CompanyModel(company), function(error, response, context) {
-  // Do Something
-});
-```
-
-### Update a batch of companies
-
-Will update all the companies in a single batch. The only __required__ field is `company_id`.
-
-```javascript
-// 1. Import the module
-var moesifapi = require('moesifapi');
-var api = moesifapi.ApiController;
-
-// 2. Configure the ApplicationId
-var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
-
-// 3. Generate a Company Model
-var companyA = {
-    companyId: "12345",
-    sessionToken: "23jdf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
-    metadata: {
-      email: "johndoe@acmeinc.com",
-      string_field: "value_1",
-      number_field: 0,
-      object_field: {
-        field_a: "value_a",
-        field_b: "value_b"
-      }
-    }
-};
-
-var companyB = {
-  companyId: "67890",
+  companyId: '67890',
+  companyDomain: 'acmeinc.com', // If domain is set, Moesif will enrich your profiles with publicly available info 
+  campaign: { 
+    utmSource: 'google',
+    utmMedium: 'cpc', 
+    utmCampaign: 'adwords',
+    utmTerm: 'api+tooling',
+    utmContent: 'landing'
+  },
   metadata: {
-    email: "johndoe@acmeinc.com",
-    string_field: "value_1",
-    number_field: 0,
-    object_field: {
-      field_a: "value_a",
-      field_b: "value_b",
-      field_c: "value_c"
+    orgName: 'Acme, Inc',
+    planName: 'Free Plan',
+    dealStage: 'Lead',
+    mrr: 24000,
+    demographics: {
+      alexaRanking: 500000,
+      employeeCount: 47
     }
   }
 };
 
-var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
+apiClient.updateCompany(company, function(error, response, context) {
+  // Do Something
+});
+```
 
-// 4. Send batch of companies
-api.updateCompaniesBatch(companies, function(error, response, context) {
+## Update Companies in Batch
+
+Similar to updateCompany, but used to update a list of companies in one batch. 
+Only the `company_id` field is required.
+For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-companies-in-batch).
+
+```javascript
+var moesifapi = require('moesifapi');
+var apiClient = moesifapi.ApiController;
+
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
+
+
+// Only companyId is required.
+// Campaign object is optional, but useful if you want to track ROI of acquisition channels
+// See https://www.moesif.com/docs/api#update-a-company for campaign schema
+// metadata can be any custom object
+var companies = [{
+    companyId: '67890',
+    companyDomain: 'acmeinc.com', // If domain is set, Moesif will enrich your profiles with publicly available info 
+    campaign: { 
+      utmSource: 'google',
+      utmMedium: 'cpc', 
+      utmCampaign: 'adwords',
+      utmTerm: 'api+tooling',
+      utmContent: 'landing'
+    },
+    metadata: {
+      orgName: 'Acme, Inc',
+      planName: 'Free Plan',
+      dealStage: 'Lead',
+      mrr: 24000,
+      demographics: {
+        alexaRanking: 500000,
+        employeeCount: 47
+      }
+    }
+  },
+  {
+    companyId: '09876',
+    companyDomain: 'contoso.com', // If domain is set, Moesif will enrich your profiles with publicly available info 
+    campaign: { 
+      utmSource: 'facebook',
+      utmMedium: 'cpc', 
+      utmCampaign: 'retargeting'
+    },
+    metadata: {
+      orgName: 'Contoso, Inc',
+      planName: 'Paid Plan',
+      dealStage: 'Lead',
+      mrr: 48000,
+      demographics: {
+        alexaRanking: 500000,
+        employeeCount: 53
+      }
+    }
+  }
+]
+
+apiClient.updateCompanies(companies, function(error, response, context) {
   // Do Something
 });
 ```
