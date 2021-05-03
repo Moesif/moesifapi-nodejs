@@ -3,8 +3,6 @@ var _APIHelper = require('../lib/APIHelper');
 var _request = require('../lib/Http/Client/RequestClient');
 
 var config =  moesifapi.configuration;
-config.ApplicationId = "Your Moesif Application Id";
-
 
 describe('RequestClient', function (done) {
   this.timeout(100000);
