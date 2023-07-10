@@ -6,7 +6,7 @@ var CampaignModel = require('../lib/Models/CampaignModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "Your Moesif ApplicationId";
+config.ApplicationId = "Your Moesif Application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -258,6 +258,11 @@ describe('TestGetAppConfig', function() {
   it('getAppConfig() should return 200 HTTP status', function(done) {
     var controller = moesifapi.ApiController;
     var request = controller.getAppConfig(function(error, response, context) {
+      console.log('response body from context');
+      console.log(JSON.stringify(context.response.body));
+      console.log('response body from HTTPResuponse object');
+      console.log(JSON.stringify(context.response.body));
+
       expect(context.response.statusCode).to.equal(200);
       if (error) done(error);
       else done();
