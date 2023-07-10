@@ -265,6 +265,17 @@ describe('TestGetAppConfig', function() {
   });
 });
 
+describe('TestGetRules', function() {
+  it('getRules() should return 200 HTTP status', function(done) {
+    var controller = moesifapi.ApiController;
+    var request = controller.getRules(function(error, response, context) {
+      expect(context.response.statusCode).to.equal(200);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
+
 describe('TestUpdateCompany', function() {
   it('updateCompany() should be success with 201 status', function(done) {
     var controller = moesifapi.ApiController;
