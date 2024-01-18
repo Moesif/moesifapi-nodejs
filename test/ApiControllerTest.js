@@ -7,7 +7,7 @@ var CampaignModel = require('../lib/Models/CampaignModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "Your Moesif Application Id";
+config.ApplicationId = "Your Moesif application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -357,10 +357,10 @@ describe('TestUpdateSubscription', function() {
     var controller = moesifapi.ApiController;
 
     var subscription = {
-      subscription_id: "12345",
-      company_id: "67890",
-      current_period_start: "2024-01-21T17:32:28.000Z",
-      current_period_end: "2024-11-21T17:32:28.000Z",
+      subscriptionId: "12345",
+      companyId: "67890",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
       status: "active",
       metadata: {
         subscription_type: "PAYG",
@@ -385,10 +385,10 @@ describe('TestUpdateSubscriptionsBatch', function() {
     var controller = moesifapi.ApiController;
 
     var subscriptionA = {
-      subscription_id: "12345",
-      company_id: "67890",
-      current_period_start: "2024-01-21T17:32:28.000Z",
-      current_period_end: "2024-11-21T17:32:28.000Z",
+      subscriptionId: "12345",
+      companyId: "67890",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
       status: "active",
       metadata: {
         subscription_type: "PAYG",
@@ -401,10 +401,10 @@ describe('TestUpdateSubscriptionsBatch', function() {
     };
 
     var subscriptionB = {
-      subscription_id: "abcde",
-      company_id: "xyz",
-      current_period_start: "2024-01-21T17:32:28.000Z",
-      current_period_end: "2024-11-21T17:32:28.000Z",
+      subscriptionId: "abcde",
+      companyId: "xyz",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
       status: "active",
       metadata: {
         subscription_type: "PAYG",
