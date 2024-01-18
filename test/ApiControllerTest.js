@@ -2,11 +2,12 @@ var moesifapi = require('../lib/index.js');
 var UserModel = require('../lib/Models/UserModel');
 var EventModel = require('../lib/Models/EventModel');
 var CompanyModel = require('../lib/Models/CompanyModel');
+var SubscriptionModel = require('../lib/Models/SubscriptionModel.js')
 var CampaignModel = require('../lib/Models/CampaignModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "Your Moesif Application Id";
+config.ApplicationId = "Your Moesif application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -344,6 +345,80 @@ describe('TestUpdateCompaniesBatch', function() {
     var companies = [new CompanyModel(companyA), new CompanyModel(companyB)];
 
     var request = controller.updateCompaniesBatch(companies, function(error, response, context) {
+      expect(context.response.statusCode).to.equal(201);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
+
+describe('TestUpdateSubscription', function() {
+  it('updateSubscription() should be success with 201 status', function(done) {
+    var controller = moesifapi.ApiController;
+
+    var subscription = {
+      subscriptionId: "12345",
+      companyId: "67890",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
+      status: "active",
+      metadata: {
+        subscription_type: "PAYG",
+        subscription_tier: "Pro",
+        quota: {
+          quota_limit: 1000000,
+          quota_period: "Year"
+        }
+      }
+    };
+
+    var request = controller.updateSubscription(new SubscriptionModel(subscription), function(error, response, context) {
+      expect(context.response.statusCode).to.equal(201);
+      if (error) done(error);
+      else done();
+    });
+  });
+});
+
+describe('TestUpdateSubscriptionsBatch', function() {
+  it('updateSubscriptionsBatch() should be success with 201 status', function(done) {
+    var controller = moesifapi.ApiController;
+
+    var subscriptionA = {
+      subscriptionId: "12345",
+      companyId: "67890",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
+      status: "active",
+      metadata: {
+        subscription_type: "PAYG",
+        subscription_tier: "Pro",
+        quota: {
+          quota_limit: 1000000,
+          quota_period: "Year"
+        }
+      }
+    };
+
+    var subscriptionB = {
+      subscriptionId: "abcde",
+      companyId: "xyz",
+      currentPeriodStart: "2024-01-21T17:32:28.000Z",
+      currentPeriodEnd: "2024-11-21T17:32:28.000Z",
+      status: "active",
+      metadata: {
+        subscription_type: "PAYG",
+        subscription_tier: "Enterprise",
+        quota: {
+          quota_limit: 1000000,
+          quota_period: "YEAR"
+        }
+      }
+    };
+
+    var subscriptions = [new SubscriptionModel(subscriptionA), new SubscriptionModel(subscriptionB)];
+
+    var request = controller.updateSubscriptionsBatch(subscriptions, function(error, response, context) {
       expect(context.response.statusCode).to.equal(201);
       if (error) done(error);
       else done();
