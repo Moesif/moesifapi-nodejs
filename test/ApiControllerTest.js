@@ -7,7 +7,7 @@ var CampaignModel = require('../lib/Models/CampaignModel');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "Your Moesif Application Id";
+config.ApplicationId = "Your Moesif application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
