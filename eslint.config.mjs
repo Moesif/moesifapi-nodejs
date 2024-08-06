@@ -21,7 +21,6 @@ export default [...compat.extends("eslint:recommended"), {
         ecmaVersion: 12,
         sourceType: "module",
     },
-
     rules: {
         "no-undef": "error",
     },
