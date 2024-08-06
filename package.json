@@ -1,6 +1,6 @@
 {
   "name": "moesifapi",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Collection/Data Ingestion API for Moesif",
   "main": "./lib/index.js",
   "keywords": [
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
+    "eslint": "^9.8.0",
     "mocha": "^10.2.0"
   },
   "scripts": {
