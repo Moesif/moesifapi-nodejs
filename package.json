@@ -1,6 +1,6 @@
 {
   "name": "moesifapi",
-  "version": "2.1.9",
+  "version": "3.0.1",
   "description": "Collection/Data Ingestion API for Moesif",
   "main": "./lib/index.js",
   "keywords": [
@@ -25,7 +25,7 @@
     "url": "https://github.com/moesif/moesifapi-nodejs"
   },
   "dependencies": {
-    "axios": "^1.7.4",
+    "axios": "^1.7.7",
     "axios-retry": "^3.5.1"
   },
   "devDependencies": {
