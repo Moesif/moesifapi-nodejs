@@ -1,4 +1,5 @@
-# MoesifApi Lib for NodeJS
+# Moesif API library for Node.js
+by [Moesif](https://moesif.com), the [API analytics](https://www.moesif.com/features/api-analytics) and [API monetization](https://www.moesif.com/solutions/metered-api-billing) platform.
 
 [![NPM](https://nodei.co/npm/moesifapi.png?compact=true&stars=true)](https://nodei.co/npm/moesifapi)
 
@@ -7,10 +8,22 @@
 [![Software License][ico-license]][link-license]
 [![Source Code][ico-source]][link-source]
 
-[Source Code on GitHub](https://github.com/moesif/moesifapi-nodejs)
+> If you're new to Moesif, see [our Getting Started](https://www.moesif.com/docs/) resources to quickly get up and running.
 
-__Check out Moesif's [Developer Documentation](https://www.moesif.com/docs) and [Node API Reference](https://www.moesif.com/docs/api?javascript) to learn more__
+## Prerequisites
+Before using this library, make sure you have the following:
 
+- [An active Moesif account](https://moesif.com/wrap)
+- [A Moesif Application ID](#get-your-moesif-application-id)
+
+### Get Your Moesif Application ID
+After you log into [Moesif Portal](https://www.moesif.com/wrap), you can get your Moesif Application ID during the onboarding steps. You can always access the Application ID any time by following these steps from Moesif Portal after logging in:
+
+1. Select the account icon to bring up the settings menu.
+2. Select **Installation** or **API Keys**.
+3. Copy your Moesif Application ID from the **Collector Application ID** field.
+
+<img class="lazyload blur-up" src="images/app_id.png" width="700" alt="Accessing the settings menu in Moesif Portal">
 
 ## How to install
 
@@ -18,9 +31,11 @@ __Check out Moesif's [Developer Documentation](https://www.moesif.com/docs) and 
 npm install moesifapi
 ```
 
-## How to use
+## How to Use
 
-(See test/ApiControllerTest.js for more usage examples)
+See `test/ApiControllerTest.js` for more usage examples.
+
+The following examples demonstrate the basid operations using this library. In these examples, replace _`YOUR_COLLECTOR_APPLICATION_ID`_ with your [Moesif Application ID](#get-your-moesif-application-id)
 
 ### Create a single API event
 
@@ -31,7 +46,7 @@ var api = moesifapi.ApiController;
 
 // 2. Configure the ApplicationId
 var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
+config.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
 
 // 3. Generate an API Event Model
 var reqHeaders = JSON.parse('{' +
@@ -117,7 +132,7 @@ var api = moesifapi.ApiController;
 
 // 2. Configure the ApplicationId
 var config = moesifapi.configuration;
-config.ApplicationId = "my_application_id";
+config.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
 
 // 3. Generate an API Event Model
 var reqHeaders = JSON.parse('{' +
@@ -193,12 +208,10 @@ api.createEventsBatch(events, function(error, response, context) {
 });
 ```
 
-## Update a Single User
+### Update a single user
 
-Create or update a user profile in Moesif.
-The metadata field can be any customer demographic or other info you want to store.
-Only the `userId` field is required.
-For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-user).
+To create or update a [user](https://www.moesif.com/docs/getting-started/users/) profile in Moesif, use the `updateUser()` function.
+
 
 ```javascript
 var moesifapi = require('moesifapi');
@@ -236,11 +249,13 @@ apiClient.updateUser(new moesifapi.UserModel(user), function(error, response, co
 });
 ```
 
-## Update Users in Batch
+The `metadata` field can contain any customer demographic or other info you want to store. Moesif only requires the `userId` field.
 
-Similar to UpdateUser, but used to update a list of users in one batch. 
-Only the `UserId` field is required.
-For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-users-in-batch).
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-user).
+
+### Update Users in Batch
+To update a list of [users](https://www.moesif.com/docs/getting-started/users/) in one batch, use the `updateUsersBatch()` function.
+
 
 ```javascript
 var moesifapi = require('moesifapi');
@@ -307,12 +322,12 @@ apiClient.updateUsersBatch(users, function(error, response, context) {
 });
 ```
 
-## Update a Single Company
+The `metadata` field can contain any customer demographic or other info you want to store. MOesif only requires the `userId` field.
 
-Create or update a company profile in Moesif.
-The metadata field can be any company demographic or other info you want to store.
-Only the `company_id` field is required.
-For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-company).
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?javascript--nodejs#update-users-in-batch).
+
+### Update a Single Company
+To update a single [company](https://www.moesif.com/docs/getting-started/companies/), use the `updateCompany()` function.
 
 ```javascript
 var moesifapi = require('moesifapi');
@@ -352,11 +367,12 @@ apiClient.updateCompany(company, function(error, response, context) {
 });
 ```
 
-## Update Companies in Batch
+The `metadata` field can contain any company demographic or other information you want to store. Moesif only requires the `companyId` field.
 
-Similar to updateCompany, but used to update a list of companies in one batch. 
-Only the `company_id` field is required.
-For details, visit the [Node.js API Reference](https://www.moesif.com/docs/api?javascript--nodejs#update-companies-in-batch).
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?javascript--nodejs#update-a-company).
+
+### Update Companies in Batch
+To update a list of [companies](https://www.moesif.com/docs/getting-started/companies/) in one batch, use the `updateCompaniesBatch()` function.
 
 ```javascript
 var moesifapi = require('moesifapi');
@@ -416,14 +432,143 @@ apiClient.updateCompanies(companies, function(error, response, context) {
 });
 ```
 
-## How To Test:
+The `metadata` field can contain any company demographic or other information you want to store. Moesif only requires the `companyId` field.
 
-````shell
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?javascript--nodejs#update-companies-in-batch).
+
+### Add a single Action
+
+To track and log single [Action](https://www.moesif.com/docs/getting-started/user-actions/) in Moesif, use the `sendAction()` function.
+
+
+```javascript
+var moesifapi = require('moesifapi');
+var apiClient = moesifapi.ApiController;
+
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
+
+// Only `actionName` and `request` is required.
+// `metadata` is an object containing custom metadata about the Action.
+var action = {
+  transactionId: "a3765025-46ec-45dd-bc83-b136c8d1d257",
+  actionName: "Clicked Sign Up",
+  sessionToken: "23jdf0owekfmcn4u3qypxg08w4d8ayrcdx8nu2nz]s98y18cx98q3yhwmnhcfx43f",
+  userId: "12345",
+  companyId: "67890",
+  metadata: {
+    email: "johndoe@acmeinc.com",
+    button_label: 'Get Started',
+    sign_up_method: 'Google SSO'
+  },
+  request: {
+    time: new Date(),
+    uri: "https://api.acmeinc.com/items/reviews/",
+    ipAddress: "61.48.220.123",
+  }
+};
+// Send the Action
+apiClient.sendAction(new ActionModel(action), function(error, response, context) {
+  // Do Something
+});
+```
+
+The `metadata` field can contain any optional metadata about the Action you want to store. Moesif only requires the `actionName` and `request` fields.
+
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?int_source=docs#track-a-custom-action).
+
+### Add a batch of Actions
+
+To track and log a batch of [Actions](https://www.moesif.com/docs/getting-started/user-actions/) in Moesif, use the `sendActionsBatch()` function.
+
+
+```javascript
+var moesifapi = require('moesifapi');
+var apiClient = moesifapi.ApiController;
+
+moesifapi.configuration.ApplicationId = "YOUR_COLLECTOR_APPLICATION_ID";
+
+// Define the request context objects for each action.
+var req_contextA = {
+  time: new Date(),
+  uri: "https://api.acmeinc.com/items/reviews/",
+  ipAddress: "61.48.220.123",
+  userAgentString: "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
+};
+
+var req_contextB = {
+  time: new Date(),
+  uri: "https://api.acmeinc.com/pricing/",
+  ipAddress: "61.48.220.126",
+  userAgentString: "PostmanRuntime/7.26.5"
+};
+
+// Define the actions.
+// Only `actionName` and `request` is required.
+// `metadata` is an object containing custom metadata about the Action.
+var actionA = {
+  transactionId: "a3765025-46ec-45dd-bc83-b136a8d1d357",
+  actionName: "Clicked Sign Up",
+  sessionToken: "23abf0owekfmcn4u3qypxg09w4d8ayrcdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+  userId: "18340",
+  companyId: "25100",
+  metadata: {
+    email: "alex@acmeinc.com",
+    button_label: 'Get Started',
+    sign_up_method: 'Google SSO'
+  },
+  request: req_contextA
+};
+
+var actionB = {
+  transactionId: "a3765024-46ee-45dd-bc83-b136c8d1d250",
+  actionName: "Viewed pricing",
+  sessionToken: "23jdf0owejfmbn4u3qypxg09w4d8ayrxdx8nu2ng]s98y18cx98q3yhwmnhcfx43f",
+  userId: "12390",
+  companyId: "97895",
+  metadata: {
+    email: "kim@acmeinc.com",
+    button_label: 'See pricing',
+    sign_up_method: 'Google SSO'
+  },
+  request: req_contextB
+};
+
+var actions = [
+  new ActionModel(actionA),
+  new ActionModel(actionB)
+];
+// Send the batch of Actions
+apiClient.sendActionsBatch(actions, function(error, response, context) {
+  // Do Something
+});
+```
+
+The `metadata` field can contain any optional metadata about the Action you want to store. Moesif only requires the `actionName` and `request` fields.
+
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?int_source=docs#track-custom-actions-in-batch).
+
+## How to test
+
+```shell
 git clone https://github.com/moesif/moesifapi-nodejs
 cd moesifapi-nodejs
 npm install --global mocha
 mocha
 ```
+
+## Additional documentation
+- [Developer documentation](https://moesif.com/docs)
+- [Moesif Node.js API reference](https://www.moesif.com/docs/api?javascript--nodejs)
+
+## How to Get Help
+If you face any issues using this library, try the [troubheshooting guidelines](#troubleshoot). For further assistance, reach out to our [support team](mailto:support@moesif.com).
+
+## Explore Moesif Integrations
+
+Explore integration options from Moesif:
+
+- [Server integration options documentation](https://www.moesif.com/docs/server-integration//)
+- [Client integration options documentation](https://www.moesif.com/docs/client-integration/)
 
 [ico-built-for]: https://img.shields.io/badge/built%20for-nodejs-blue.svg
 [ico-downloads]: https://img.shields.io/npm/dt/moesifapi.svg
