@@ -35,7 +35,7 @@ npm install moesifapi
 
 See `test/ApiControllerTest.js` for more usage examples.
 
-The following examples demonstrate the basid operations using this library. In these examples, replace _`YOUR_COLLECTOR_APPLICATION_ID`_ with your [Moesif Application ID](#get-your-moesif-application-id)
+The following examples demonstrate the basic operations using this library. In these examples, replace _`YOUR_COLLECTOR_APPLICATION_ID`_ with your [Moesif Application ID](#get-your-moesif-application-id)
 
 ### Create a single API event
 
@@ -211,7 +211,6 @@ api.createEventsBatch(events, function(error, response, context) {
 ### Update a single user
 
 To create or update a [user](https://www.moesif.com/docs/getting-started/users/) profile in Moesif, use the `updateUser()` function.
-
 
 ```javascript
 var moesifapi = require('moesifapi');
@@ -474,7 +473,7 @@ apiClient.sendAction(new ActionModel(action), function(error, response, context)
 
 The `metadata` field can contain any optional metadata about the Action you want to store. Moesif only requires the `actionName` and `request` fields.
 
-This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?int_source=docs#track-a-custom-action).
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif API reference](https://www.moesif.com/docs/api?int_source=docs#track-a-custom-action).
 
 ### Add a batch of Actions
 
@@ -545,7 +544,15 @@ apiClient.sendActionsBatch(actions, function(error, response, context) {
 
 The `metadata` field can contain any optional metadata about the Action you want to store. Moesif only requires the `actionName` and `request` fields.
 
-This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif Node.js API reference](https://www.moesif.com/docs/api?int_source=docs#track-custom-actions-in-batch).
+This method is a convenient helper that calls the Moesif API library. For more information, see the function documentation in [Moesif API reference](https://www.moesif.com/docs/api?int_source=docs#track-custom-actions-in-batch).
+
+## Troubleshoot
+For a general troubleshooting guide that can help you solve common problems, see [Server Troubleshooting Guide](https://www.moesif.com/docs/troubleshooting/server-troubleshooting-guide/).
+
+Other troubleshooting supports:
+
+- [FAQ](https://www.moesif.com/docs/faq/)
+- [Moesif support email](mailto:support@moesif.com)
 
 ## How to test
 
