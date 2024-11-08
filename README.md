@@ -466,7 +466,7 @@ var action = {
   }
 };
 // Send the Action
-apiClient.sendAction(new ActionModel(action), function(error, response, context) {
+apiClient.sendAction(new moesifapi.ActionModel(action), function(error, response, context) {
   // Do Something
 });
 ```
@@ -533,8 +533,8 @@ var actionB = {
 };
 
 var actions = [
-  new ActionModel(actionA),
-  new ActionModel(actionB)
+  new moesifapi.ActionModel(actionA),
+  new moesifapi.ActionModel(actionB)
 ];
 // Send the batch of Actions
 apiClient.sendActionsBatch(actions, function(error, response, context) {
