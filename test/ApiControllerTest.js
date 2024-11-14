@@ -8,7 +8,7 @@ const ActionModel = require('../lib/Models/ActionModel.js');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "eyJhcHAiOiI0ODc6MjA2IiwidmVyIjoiMi4xIiwib3JnIjoiODg6MjEwIiwiaWF0IjoxNzMwNDE5MjAwfQ.UCz12JDtp1guiynkuyV-5hVhZmC3eguh7q7P5FnGZkg";
+config.ApplicationId = "Your Application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
