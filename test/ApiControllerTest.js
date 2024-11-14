@@ -8,7 +8,7 @@ const ActionModel = require('../lib/Models/ActionModel.js');
 var expect = require('chai').expect;
 var config = moesifapi.configuration;
 
-config.ApplicationId = "Your Moesif application Id";
+config.ApplicationId = "Your Application Id";
 
 describe('TestAddEvent', function() {
     it('createEvent() should return 201 HTTP status', function(done) {
@@ -488,7 +488,7 @@ describe('TestSendAction', function() {
       },
       request: req_contextA
     };
-    
+
     var actionB = {
       transactionId: "a3765024-46ee-45dd-bc83-b136c8d1d250",
       actionName: "Viewed pricing",
